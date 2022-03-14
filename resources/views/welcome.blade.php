@@ -30,8 +30,5 @@
           Fugiat veniam labore ad laboris. In nisi cillum nostrud eu irure.
         </p>
 </article>
-
-    
-
 </body>
 </html>
