@@ -1,3 +1,12 @@
 body {
-    background-color: blue;
+    background-color: white;
+    color: black;
+    max-width: 600px;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+article+article {
+    margin-top: 10px;
+    border-top: 50px;
 }

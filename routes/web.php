@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +31,18 @@ use Illuminate\Support\Facades\Route;
 //    ['varP'=>$varWelcome]
 // );
 // })->where('funcParam',);
-Route::get('/', function () {
-   return view('welcome', ['varP'=>'<h1>Hello world</h1>']);
+Route::get('/', function () { 
+   $documents=YamlFrontMatter::parseFile(resource_path('posts/p4.html'));
+   ddd($documents);
+   // return view('welcome',['posts'=>Post::all()]);
+});
+Route::get("/post/{varParm}", function ($varParm) {
+    return view('post',
+    ['varRoute'=>Post::find($varParm) 
+ ]// varRoute  to pass ver post.blade.php
+ );
+   
 });
 
 
+?>
