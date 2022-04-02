@@ -31,10 +31,20 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 //    ['varP'=>$varWelcome]
 // );
 // })->where('funcParam',);
+
 Route::get('/', function () { 
-   $documents=YamlFrontMatter::parseFile(resource_path('posts/p4.html'));
-   ddd($documents);
-   // return view('welcome',['posts'=>Post::all()]);
+   $files =  File::files(resource_path("posts/"));
+   $posts=[];
+   foreach ($files as $file){ 
+      $document=YamlFrontMatter::parseFile($file);
+      $posts[] = new Post(
+         $document->title,
+         $document->excerpt,
+         $document->date,
+         $document->body(),
+      );
+   }
+   return view('welcome',['posts'=>$posts]);
 });
 Route::get("/post/{varParm}", function ($varParm) {
     return view('post',

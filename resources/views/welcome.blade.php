@@ -7,11 +7,12 @@
         
         <title>my Bolg</title>
 </head>
-<body>          
-  <?php foreach($posts as $post) :?>
+<body>     
+        <?php foreach ($posts as $post) :?>
         <article>
-                <?=$post?>
+                <h1><a href="/"><?=$post->title?></a></h1>
+                <?=$post->body?>        
         </article>
-  <?php endforeach; ?>
+        <?php endforeach; ?>
 </body>
 </html>

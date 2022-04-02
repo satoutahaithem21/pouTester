@@ -13,6 +13,17 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Post 
 {
+    public $title;
+    public $excerpt;  
+    public $date;  
+    public $body; 
+   public function __construct($title,$excerpt,$date,$body){
+       $this->title=$title;
+       $this->excerpt=$excerpt;
+       $this->date=$date; 
+       $this->body=$body;
+   }
+
     static function find($varParm){ 
         if (!file_exists($path=resource_path("posts/{$varParm}.html")))
         {
@@ -20,7 +31,6 @@ class Post
         }
         
              return cache()->remember("post.{$varParm}",5,function() use ($path){
-                var_dump("file_get content");
                return file_get_contents($path); 
             });
 

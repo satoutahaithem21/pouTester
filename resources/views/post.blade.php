@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <?=$varRoute->title?>
     <?= $varRoute?>
+    <h3><a href="/">Go back</a></h3>
 </body>
 </html>
